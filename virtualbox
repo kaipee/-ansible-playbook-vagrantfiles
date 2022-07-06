@@ -1,20 +1,31 @@
-BOX_NAME = ""
-BOX_DISTRO = ""
-BOX_RELEASE = ""
+BOX_DISTRO = "ubuntu"
+BOX_RELEASE = "bionic64"
+BOX_VERSION = ""
+BOX_URL = ""
+
+VM_NAME = ""
 VM_MEMORY = 1024
 VM_CPU = 1
-VM_IP = '192.168.56.56'
+VM_PORT_GUEST = 80
+VM_PORT_HOST = 9080
+VM_DISPLAY_GUI = false
 
 Vagrant.configure("2") do |config|
     config.vm.box = "#{BOX_DISTRO}/#{BOX_RELEASE}"
-    config.vm.network "private_network", ip: "#{VM_IP}"
+    config.vm.box_url = "#{BOX_URL}"
+    config.vm.box_check_update = false
+    config.vm.box_version = "#{BOX_VERSION}"
+
+    config.vm.hostname = "#{VM_NAME}"
+    config.vm.network "forwarded_port", guest: VM_PORT_GUEST, host: VM_PORT_HOST, host_ip: "127.0.0.1"
   
     config.vm.provider :virtualbox do |vb|
       vb.memory = VM_MEMORY
       vb.cpus = VM_CPU
+      vb.gui = VM_DISPLAY_GUI
       vb.customize [
         "modifyvm", :id, "--uartmode1", "file",
-        File.join(Dir.pwd, ".vagrant/#{BOX_NAME}-#{BOX_DISTRO}-#{BOX_RELEASE}-cloudimg-console.log")
+        File.join(Dir.pwd, ".vagrant/#{VM_NAME}-#{BOX_DISTRO}-#{BOX_RELEASE}-cloudimg-console.log")
       ]
     end
   
