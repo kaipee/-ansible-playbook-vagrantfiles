@@ -52,6 +52,8 @@ In order to ensure the Vagrant virtual environment (Box) doesn't get committed t
 vagrant up
 ```
 
+Once the environment is up and running it can be accessed at **127.0.0.1**. For security the environment is configured to only listen on this interface.
+
 ### Login to the environment
 
 ```sh
