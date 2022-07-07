@@ -3,11 +3,11 @@ BOX_RELEASE = "bionic64"
 BOX_VERSION = ""
 BOX_URL = ""
 
-VM_NAME = ""
-VM_MEMORY = 1024
+VM_NAME = "playbooktest"
+VM_MEMORY = 512
 VM_CPU = 1
 VM_PORT_GUEST = 80
-VM_PORT_HOST = 9080
+VM_PORT_HOST = 8080
 VM_DISPLAY_GUI = false
 
 Vagrant.configure("2") do |config|
