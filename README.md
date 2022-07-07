@@ -79,5 +79,5 @@ The Ansible Playbook will be mounted in the environment under `/vagrant/` .
 ### Destroy an environment
 
 ```sh
-vagrant destroy
+vagrant destroy -f
 ```
