@@ -24,19 +24,19 @@ In order to ensure the Vagrant virtual environment (Box) doesn't get committed t
 
 ## Usage
 
-**Provision an environment**
+### Provision an environment
 
 ```sh
 vagrant up
 ```
 
-**Login to the environment**
+### Login to the environment
 
 ```sh
 vagrant ssh
 ```
 
-**Destroy an environment**
+### Destroy an environment
 
 ```sh
 vagrant destroy
