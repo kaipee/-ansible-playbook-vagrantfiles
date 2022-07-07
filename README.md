@@ -64,6 +64,10 @@ Once the environment is up and running it can be accessed at **127.0.0.1**. For 
 vagrant ssh
 ```
 
+The environment can be accessed via SSH in order to troubleshoot Playbook provisioning issues.
+
+The Ansible Playbook will be mounted in the environment under `/vagrant/` .
+
 ### Destroy an environment
 
 ```sh
