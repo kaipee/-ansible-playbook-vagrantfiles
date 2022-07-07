@@ -8,11 +8,33 @@ Ensure the Vagrant Provider for your chosen Vagrantfile is installed as per the 
 
 ## Instructions
 
+### Vagrantfile usage
+
 Save one of the files, depending on desired Vagrant Provider, in the root directory of your Ansible Playbook and rename it to `vagrantfile`.
 
 The Vagrantfile template will deploy a local virtual environment and automatically provision it using your Ansible Playbook.
 
 If your Playbook file isn't named **playbook.yml**, you will need to replace `playbook.yml` in the Vagrantfile with the name of your playbook.
+
+### Configure the virtual environment
+
+Configure the testing environment depending on your needs using the variables contained at the start of each Vagrantfile.
+
+#### Example
+
+```ruby
+BOX_DISTRO = "ubuntu"
+BOX_RELEASE = "bionic64"
+BOX_VERSION = ">=v20220705.0.0"
+BOX_URL = "https://app.vagrantup.com/ubuntu/boxes/bionic64"
+
+VM_NAME = "ubuntu-playbook"
+VM_MEMORY = 2049
+VM_CPU = 2
+VM_PORT_GUEST = 80
+VM_PORT_HOST = 8080
+VM_DISPLAY_GUI = false
+```
 
 ### Exclude .vagrant working directory
 
