@@ -20,6 +20,10 @@ If your Playbook file isn't named **playbook.yml**, you will need to replace `pl
 
 Configure the testing environment depending on your needs using the variables contained at the start of each Vagrantfile.
 
+Boxes and their details can be found at https://app.vagrantup.com/boxes/search .
+
+VM configurations should be changed to meet your needs.
+
 #### Example
 
 ```ruby
