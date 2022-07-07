@@ -58,6 +58,14 @@ vagrant up
 
 Once the environment is up and running it can be accessed at **127.0.0.1**. For security the environment is configured to only listen on this interface.
 
+### Re-provision the environment
+
+If the environment is up and running but there are issues with the Playbook, after ediiting the Playbook you can simply re-provision it without re-deploying the environment.
+
+```sh
+vagrant provision
+```
+
 ### Login to the environment
 
 ```sh
