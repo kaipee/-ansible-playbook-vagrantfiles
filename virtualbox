@@ -12,9 +12,13 @@ VM_DISPLAY_GUI = false
 
 Vagrant.configure("2") do |config|
     config.vm.box = "#{BOX_DISTRO}/#{BOX_RELEASE}"
-    config.vm.box_url = "#{BOX_URL}"
+    if (!BOX_VERSION.empty?)
+      config.vm.box_version = "#{BOX_VERSION}"
+    end
+    if (!BOX_URL.empty?)
+      config.vm.box_url = "#{BOX_URL}"
+    end
     config.vm.box_check_update = false
-    config.vm.box_version = "#{BOX_VERSION}"
 
     config.vm.hostname = "#{VM_NAME}"
     config.vm.network "forwarded_port", guest: VM_PORT_GUEST, host: VM_PORT_HOST, host_ip: "127.0.0.1"
