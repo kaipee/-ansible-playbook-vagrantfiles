@@ -24,6 +24,8 @@ Boxes and their details can be found at https://app.vagrantup.com/boxes/search .
 
 VM configurations should be changed to meet your needs.
 
+Variables `BOX_VERSION` and `BOX_URL` are **optional**.
+
 #### Example
 
 ```ruby
