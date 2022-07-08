@@ -29,8 +29,8 @@ VM configurations should be changed to meet your needs.
 ```ruby
 BOX_DISTRO = "ubuntu"
 BOX_RELEASE = "bionic64"
-BOX_VERSION = ">=v20220705.0.0"
-BOX_URL = "https://app.vagrantup.com/ubuntu/boxes/bionic64"
+BOX_VERSION = ">=v20220705.0.0"  # optional
+BOX_URL = "https://app.vagrantup.com/ubuntu/boxes/bionic64"  # optional
 
 VM_NAME = "ubuntu-playbook"
 VM_MEMORY = 2049
