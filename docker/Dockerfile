@@ -25,3 +25,9 @@ EXPOSE 22
 
 # Start SSH when the container launches
 CMD ["/usr/sbin/sshd", "-D"]
+
+# Create image with systemd and boot like a real environment.
+RUN apt-get install -y systemd systemd-sysv dbus dbus-user-session
+RUN printf "systemctl start systemd-logind" >> /etc/profile
+
+ENTRYPOINT ["/sbin/init"]
