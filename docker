@@ -1,0 +1,23 @@
+BOX_DISTRO = "ubuntu"
+BOX_RELEASE = "latest"
+
+VM_NAME = "playbooktest"
+VM_PORT_GUEST = 80
+VM_PORT_HOST = 8080
+
+Vagrant.configure("2") do |config|
+
+    config.vm.provider "docker" do |d|
+      d.image = "#{BOX_DISTRO}/#{BOX_RELEASE}"
+    end
+
+    config.vm.name = "#{VM_NAME}"
+    config.vm.has_ssh = true
+    config.vm.ports = ["#{VM_PORT_HOST}:#{VM_PORT_GUEST}"]
+    config.vm.remains_running = true
+  
+    config.vm.provision "ansible" do |ansible|
+      ansible.playbook = "playbook.yml"
+    end
+
+end
