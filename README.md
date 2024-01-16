@@ -19,7 +19,7 @@ If your Playbook file isn't named **playbook.yml**, you will need to replace `pl
 The Vagrantfile will make use of Ansible Roles. Make sure to install the Ansible Roles before starting with vagrant:
 
 ```sh
-ansible-galaxy install -r roles/requirements.yml
+ansible-galaxy role install --force -r roles/requirements.yml
 ```
 
 ### Configure the virtual environment
@@ -61,7 +61,7 @@ In order to ensure the Vagrant virtual environment (Box) doesn't get committed t
 ### Install any Ansible Roles
 
 ```sh
-ansible-galaxy install -r roles/requirements.yml
+ansible-galaxy role install --force -r roles/requirements.yml
 ```
 
 ### Provision an environment
