@@ -10,6 +10,8 @@ Vagrant.configure("2") do |config|
     d.name = "#{VM_NAME}"
     # Path to the directory containing the Dockerfile
     d.build_dir = "."
+    # Use a privileged container (required for systemd)
+    d.priviliged = true
     # Configure the container to keep it running and enable SSH
     d.has_ssh = true
     d.remains_running = true
