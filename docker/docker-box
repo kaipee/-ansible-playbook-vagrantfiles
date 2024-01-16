@@ -1,23 +1,32 @@
-BOX_DISTRO = "ubuntu"
-BOX_RELEASE = "latest"
-
 VM_NAME = "playbooktest"
 VM_PORT_GUEST = 80
 VM_PORT_HOST = 8080
 
 Vagrant.configure("2") do |config|
 
-    config.vm.provider "docker" do |d|
-      d.image = "#{BOX_DISTRO}/#{BOX_RELEASE}"
-    end
+  config.vm.hostname = "#{VM_NAME}"
 
-    config.vm.name = "#{VM_NAME}"
-    config.vm.has_ssh = true
-    config.vm.ports = ["#{VM_PORT_HOST}:#{VM_PORT_GUEST}"]
-    config.vm.remains_running = true
-  
-    config.vm.provision "ansible" do |ansible|
-      ansible.playbook = "playbook.yml"
-    end
+  config.vm.provider "docker" do |d|
+    d.name = "#{VM_NAME}"
+    # Path to the directory containing the Dockerfile
+    d.build_dir = "."
+    # Configure the container to keep it running and enable SSH
+    d.has_ssh = true
+    d.remains_running = true
+    # Forward the SSH port (default 22) to a host port (e.g., 2222)
+    d.ports = ["2222:22", "#{VM_PORT_HOST}:#{VM_PORT_GUEST}"]
+  end
+
+  # Enable SSH access with the root user (assuming your Dockerfile sets up these credentials)
+  config.ssh.username = "root"
+  config.ssh.password = "root"
+  config.ssh.port = 2222
+
+  config.vm.provision "ansible" do |ansible|
+    ansible.playbook = "playbook.yml"
+    ansible.galaxy_role_file = "roles/requirements.yml"
+    ansible.galaxy_roles_path = "roles"
+    ansible.verbose = "v"
+  end
 
 end
