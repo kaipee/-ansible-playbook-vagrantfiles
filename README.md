@@ -16,6 +16,12 @@ The Vagrantfile template will deploy a local virtual environment and automatical
 
 If your Playbook file isn't named **playbook.yml**, you will need to replace `playbook.yml` in the Vagrantfile with the name of your playbook.
 
+The Vagrantfile will make use of Ansible Roles. Make sure to install the Ansible Roles before starting with vagrant:
+
+```sh
+ansible-galaxy install -r roles/requirements.yml
+```
+
 ### Configure the virtual environment
 
 Configure the testing environment depending on your needs using the variables contained at the start of each Vagrantfile.
@@ -52,6 +58,12 @@ In order to ensure the Vagrant virtual environment (Box) doesn't get committed t
 
 ## Usage
 
+### Install any Ansible Roles
+
+```sh
+ansible-galaxy install -r roles/requirements.yml
+```
+
 ### Provision an environment
 
 ```sh
@@ -62,7 +74,7 @@ Once the environment is up and running it can be accessed at **127.0.0.1**. For 
 
 ### Re-provision the environment
 
-If the environment is up and running but there are issues with the Playbook, after ediiting the Playbook you can simply re-provision it without re-deploying the environment.
+If the environment is up and running but there are issues with the Playbook, after editing the Playbook you can simply re-provision it without re-deploying the environment.
 
 ```sh
 vagrant provision
